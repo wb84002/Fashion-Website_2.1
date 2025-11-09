@@ -43,7 +43,7 @@
               <div class="name">純色圓領T</div>
               <div class="price">NT$ 299</div>
               <div>
-                <a class="btn btn-primary" href="productPage.jsp?id=A1001">查看</a>
+                <a class="btn btn-primary" href="productPage.jsp?id=1">查看</a>
                 <a class="btn add-cart" href="#" onclick="addToCart('純色圓領T')">加入購物車</a>
               </div>
             </div>
@@ -55,7 +55,7 @@
               <div class="name">口袋短T</div>
               <div class="price">NT$ 329</div>
               <div>
-                <a class="btn btn-primary" href="productPage.jsp?id=A1002">查看</a>
+                <a class="btn btn-primary" href="productPage.jsp?id=2">查看</a>
                 <a class="btn" href="#" onclick="addToCart('口袋短T')">加入購物車</a>
               </div>
             </div>
@@ -67,7 +67,7 @@
               <div class="name">寬鬆印花T</div>
               <div class="price">NT$ 399</div>
               <div>
-                <a class="btn btn-primary" href="productPage.jsp?id=A1003">查看</a>
+                <a class="btn btn-primary" href="productPage.jsp?id=5">查看</a>
                 <a class="btn" href="#" onclick="addToCart('寬鬆印花T')">加入購物車</a>
               </div>
             </div>

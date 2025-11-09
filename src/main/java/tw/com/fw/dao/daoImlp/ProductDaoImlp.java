@@ -23,7 +23,7 @@ public class ProductDaoImlp implements ProductDao {
 	public List<Product> getProductByCategory(String category) {
 		
 		List<Product> list = new ArrayList<>();
-		String sql = "SELECT * FROM product WHERE category = ?";
+		String sql = "SELECT * FROM product_menu WHERE category = ?";
 		try (PreparedStatement ps = conn.prepareStatement(sql)) {
 			ps.setString(1, category);
 			ResultSet rs = ps.executeQuery();

@@ -30,7 +30,7 @@
 						<div class="name">${product.productName}</div>
 						<div class="price">NT$ ${product.price}</div>
 						<div>
-							<a class="btn btn-primary" href="">查看</a>
+							<a class="btn btn-primary" href="productPage.jsp?id=${product.productId}">查看</a>
 						</div>
 					</div>
 				</article>
