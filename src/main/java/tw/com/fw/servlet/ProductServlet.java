@@ -21,33 +21,32 @@ public class ProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// 取得home.jsp傳來的參數
 		String category = request.getParameter("category");
-		
-		String categoryName = "";
+		System.out.println("category = " + category);
+		List<Product> lists;
+		String categoryName = "全部商品";
 
-		// 依照類別顯示中文名稱
-		if (category.equals("Clothes")) {
-			categoryName = "上衣";
-		} else if (category.equals("Pants")) {
-			categoryName = "下衣";
-		} else if (category.equals("Bags")) {
-			categoryName = "包包";
+		if (category == null || category.isEmpty()) {
+			lists = dao.query();
 		} else {
-			categoryName = "全部";
+			switch (category) {
+				case "Clothes":
+					categoryName = "上衣";
+					break;
+				case "Pants":
+					categoryName = "下衣";
+					break;
+				case "Bags":
+					categoryName = "包包";
+					break;
+			}
+			lists = dao.getProductByCategory(category);
 		}
 
-	
-	
-	// 從資料庫查詢該分類的商品清單
-	List<Product> productList = dao.getProductByCategory(category);
-	// 將資料放入request屬性，讓JSP能使用EL顯示
-	request.setAttribute("category", category);
-	request.setAttribute("categoryName", categoryName);
-	request.setAttribute("productList", productList);
-	
-	// 導到ProductCategoryPage.jsp顯示結果
-	request.getRequestDispatcher("ProductCategoryPage.jsp").forward(request, response);
+		request.setAttribute("lists", lists);
+		request.setAttribute("categoryName", categoryName);
+		
+		request.getRequestDispatcher("ProductCategoryPage.jsp").forward(request, response);
 }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

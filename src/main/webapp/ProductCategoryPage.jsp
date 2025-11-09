@@ -17,30 +17,26 @@
 
 <body>
 	<%@include file="components/header.jsp"%>
-
 	<!-- ===== 分類區 ===== -->
-	<section id="${category}" class="wrap">
+	<
+	<div class="wrap">
+		>
 		<h2>${categoryName}</h2>
 		<div class="panel p-t grid">
-			 <c:forEach items="${productList}" var="product"> 
+			<c:forEach items="${lists}" var="product">
 				<article class="card">
-					<img src="${product.image_url1}" alt="${product.product_name}">
+					<img src="${product.image_url1}" alt="">
 					<div class="meta">
-						<div class="name">${product.product_name}</div>
+						<div class="name">${product.productName}</div>
 						<div class="price">NT$ ${product.price}</div>
 						<div>
-							<a class="btn btn-primary"
-								href="ProductServlet?id=${product.product_id}">查看</a> <a
-								class="btn add-cart" href="#"
-								onclick="addToCart('${product.product_name}')">加入購物車</a>
+							<a class="btn btn-primary" href="">查看</a>
 						</div>
 					</div>
 				</article>
-		
-	 </c:forEach> 
-</div>
-	</section>
-	
+			</c:forEach>
+		</div>
+	</div>
 	<!-- ===== Footer ===== -->
 	<footer class="footer">
 		<p>© 2025 Women Fashion Style. All rights reserved.</p>
