@@ -50,8 +50,8 @@ public class Product {
     public Integer getPrice() { return price; }
     public void setPrice(Integer price) { this.price = price; }
 
-    public int getStock() { return stock; }
-    public void setStock(int stock) { this.stock = stock; }
+    public Integer getStock() { return stock; }
+    public void setStock(Integer stock) { this.stock = stock; }
 
     public String getImage_url1() { return image_url1; }
     public void setImage_url1(String image_url1) { this.image_url1 = image_url1; }

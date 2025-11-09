@@ -27,9 +27,9 @@
 
   <!-- ===== 上衣區 ===== -->
   <section id="tops" class="wrap">
-    <h2> <a href= "ProductServlet?category=Clothes">上衣</a></h2>
+    <h2>上衣</h2>
     <div class="tabs">
-      //<input type="radio" name="cat" id="tab-t" checked>
+      <input type="radio" name="cat" id="tab-t" checked>
       <label for="tab-t">T恤</label>
       <input type="radio" name="cat" id="tab-shirt">
       <label for="tab-shirt">襯衫</label>
@@ -106,7 +106,7 @@
 
   <!-- ===== 下衣區 ===== -->
   <section id="bottoms" class="wrap">
-    <h2><a href= "ProductServlet?category=Pants">下衣</a></h2>
+    <h2>下衣</h2>
     <div class="grid">
       <article class="card">
         <img src="images/acc/bottoms1.jpg" alt="高腰直筒牛仔褲">
@@ -148,7 +148,7 @@
 
   <!-- ===== 包包區 ===== -->
   <section id="bags" class="wrap">
-    <h2><a href= "ProductServlet?category=Bags">包包</a></h2>
+    <h2>包包</h2>
     <div class="grid">
       <article class="card">
         <img src="images/acc/Bag2.jpg" alt="托特包">

@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="tw.com.fw.model.Product"%>
 <!DOCTYPE html>
@@ -20,10 +19,10 @@
 	<%@include file="components/header.jsp"%>
 
 	<!-- ===== 分類區 ===== -->
-	<section id="${categoryName}" class="wrap">
+	<section id="${category}" class="wrap">
 		<h2>${categoryName}</h2>
 		<div class="panel p-t grid">
-			<c:forEach items="${productList}" var="list">
+			 <c:forEach items="${productList}" var="product"> 
 				<article class="card">
 					<img src="${product.image_url1}" alt="${product.product_name}">
 					<div class="meta">
@@ -38,7 +37,7 @@
 					</div>
 				</article>
 		
-	</c:forEach>
+	 </c:forEach> 
 </div>
 	</section>
 	
