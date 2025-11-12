@@ -19,9 +19,9 @@
     <div class="brand">Women Fashion<br/>Style</div>
     <nav class="mainnav">
       <a href="#home">首頁</a>
-      <a href="ProductServlet?category=Clothes">上衣</a>
-      <a href="ProductServlet?category=Pants">下衣</a>
-      <a href="ProductServlet?category=Bags">包包</a>
+      <a href="ProductCategoryPageServlet?category=Clothes">上衣</a>
+      <a href="ProductCategoryPageServlet?category=Pants">下衣</a>
+      <a href="ProductCategoryPageServlet?category=Bags">包包</a>
     </nav>
     
     <div class="actions">

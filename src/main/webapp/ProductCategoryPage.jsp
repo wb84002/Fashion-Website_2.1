@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="tw.com.fw.model.Product"%>
@@ -18,10 +17,8 @@
 <body>
 	<%@include file="components/header.jsp"%>
 	<!-- ===== 分類區 ===== -->
-	<
-	<div class="wrap">
-		>
-		<h2>${categoryName}</h2>
+	
+	<div class="wrap"><h2>${categoryName}</h2>
 		<div class="panel p-t grid">
 			<c:forEach items="${lists}" var="product">
 				<article class="card">
@@ -30,7 +27,7 @@
 						<div class="name">${product.productName}</div>
 						<div class="price">NT$ ${product.price}</div>
 						<div>
-							<a class="btn btn-primary" href="productPage.jsp?id=${product.productId}">查看</a>
+							<a class="btn btn-primary" href="ProductPageServlet?id=${product.productId}">查看</a>
 						</div>
 					</div>
 				</article>

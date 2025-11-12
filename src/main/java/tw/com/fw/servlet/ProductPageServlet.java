@@ -13,40 +13,26 @@ import tw.com.fw.dao.ProductDao;
 import tw.com.fw.dao.daoImlp.ProductDaoImlp;
 import tw.com.fw.model.Product;
 
-@WebServlet("/ProductCategoryPageServlet")
-public class ProductCategoryPageServlet extends HttpServlet {
+@WebServlet("/ProductPageServlet")
+public class ProductPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductDao dao = new ProductDaoImlp();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String category = request.getParameter("category");
-		System.out.println("category = " + category);
+		String id = request.getParameter("id");
+		System.out.println("id = " + id);
 		List<Product> lists;
-		String categoryName = "全部商品";
 
-		if (category == null || category.isEmpty()) {
+		if (id == null || id.isEmpty()) {
 			lists = dao.query();
 		} else {
-			switch (category) {
-				case "Clothes":
-					categoryName = "上衣";
-					break;
-				case "Pants":
-					categoryName = "下衣";
-					break;
-				case "Bags":
-					categoryName = "包包";
-					break;
-			}
-			lists = dao.getProductByCategory(category);
+			lists = dao.getProductById(id);
 		}
 
-		request.setAttribute("lists", lists);
-		request.setAttribute("categoryName", categoryName);
-		
-		request.getRequestDispatcher("ProductCategoryPage.jsp").forward(request, response);
+		request.setAttribute("lists", lists);		
+		request.getRequestDispatcher("productPage.jsp").forward(request, response);
 }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

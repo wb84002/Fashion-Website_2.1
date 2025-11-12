@@ -18,13 +18,21 @@ public class ProductDaoImlp implements ProductDao {
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 
+	//定義的query() 方法
+	@Override
+	public List<Product> query() {
+	    return queryAll();
+	}
+	
+	
 	// 依據category，查詢商品
 	@Override
 	public List<Product> getProductByCategory(String category) {
 		
+		
 		List<Product> list = new ArrayList<>();
-		String sql = "SELECT * FROM product_menu WHERE category = ?";
-		try (PreparedStatement ps = conn.prepareStatement(sql)) {
+		String categorysql = "SELECT * FROM product_menu WHERE category = ?";
+		try (PreparedStatement ps = conn.prepareStatement(categorysql)) {
 			ps.setString(1, category);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -50,29 +58,28 @@ public class ProductDaoImlp implements ProductDao {
 	}
 	
 	
-	// 查詢全部
+	// 依據產品ID，查詢該產品相關資訊
 	@Override
-	public List<Product> query() {
-
+	public List<Product> getProductById(String id) {
+		
 		List<Product> list = new ArrayList<Product>();
-		try {
-			
-			String querySQL = "SELECT * FROM product ORDER BY product_id;";
-			ps = conn.prepareStatement(querySQL);
-			rs = ps.executeQuery();
+		String querySQL = "SELECT * FROM product_detial WHERE pd_id=?";
+		try (PreparedStatement ps = conn.prepareStatement(querySQL)){			
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Product product = new Product();
-				product.setProductId(rs.getInt("product_id"));
-				product.setProductName(rs.getString("product_name"));
-				product.setSize(rs.getString("size"));
-				product.setCategory(rs.getString("category"));
-				product.setPrice(rs.getInt("price"));
-				product.setStock(rs.getInt("stock"));
-				product.setDescription(rs.getString("description"));
-				product.setImage_url1(rs.getString("image_url1"));
-				product.setImage_url2(rs.getString("image_url2"));
-				product.setImage_url3(rs.getString("image_url3"));
-				product.setProduct_url(rs.getString("product_url"));
+				product.setProductId(rs.getInt("pd_id"));
+				product.setProductName(rs.getString("pd_name"));
+				product.setSize(rs.getString("pd_size"));
+				product.setCategory(rs.getString("pd_category"));
+				product.setPrice(rs.getInt("pd_price"));
+				product.setStock(rs.getInt("pd_stock"));
+				product.setDescription(rs.getString("pd_description"));
+				product.setImage_url1(rs.getString("pd_image_url1"));
+				product.setImage_url2(rs.getString("pd_image_url2"));
+				product.setImage_url3(rs.getString("pd_image_url3"));
+				product.setProduct_url(rs.getString("pd_product_url"));
 				list.add(product);
 			}
 

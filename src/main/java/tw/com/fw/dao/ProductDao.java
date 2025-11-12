@@ -13,9 +13,9 @@ public interface ProductDao {
 	 * 新增產品資料到資料庫 回傳值：新增成功的筆數（通常是 1） int可改用boolean，回傳是否修改成功
 	 */
 	int addProduct(Product product);
-	/*
-	 * // 根據 ID 查詢產品 Product getProductById(int productId);
-	 */
+	
+	// 根據 ID 查詢產品 
+	public List<Product> getProductById(String id);
 
 	// (根據 ID) 查詢產品
 	List<Product> query();
