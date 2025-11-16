@@ -48,6 +48,7 @@ public class ProductDaoImlp implements ProductDao {
 				product.setImage_url2(rs.getString("image_url2"));
 				product.setImage_url3(rs.getString("image_url3"));
 				product.setProduct_url(rs.getString("product_url"));
+//				System.out.println(product);
 				list.add(product);
 			}
 
