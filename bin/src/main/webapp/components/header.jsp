@@ -18,7 +18,7 @@
   <header class="topbar">
     <div class="brand">Women Fashion<br/>Style</div>
     <nav class="mainnav">
-      <a href="home.jsp">首頁</a>
+      <a href="#home">首頁</a>
       <a href="ProductCategoryPageServlet?category=Clothes">上衣</a>
       <a href="ProductCategoryPageServlet?category=Pants">下衣</a>
       <a href="ProductCategoryPageServlet?category=Bags">包包</a>
@@ -32,11 +32,8 @@
         <% } else { %>
             <button onclick="location.href='Login.jsp'">登入</button>
         <% } %>
-        
       <button aria-label="search">🔍</button>
       <button aria-label="favorites">♡</button>
-      <!--  <button aria-label="cart">🛒</button> -->
-      
-      <button onclick="location.href='shoppingCart.jsp'" aria-label="cart">🛒</button>
+      <button aria-label="cart">🛒</button>
     </div>
   </header>
