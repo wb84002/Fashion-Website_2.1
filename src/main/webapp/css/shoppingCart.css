@@ -1,0 +1,52 @@
+/* /css/shoppingCart.css */
+
+/* 確保這些樣式不會與 Login.css 衝突 */
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.cart-table th, .cart-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+.cart-table th {
+  background-color: #f2f2f2;
+}
+.total-row td {
+  font-weight: bold;
+  font-size: 1.2em;
+  background-color: #e6ffe6;
+}
+.action-btn {
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+.action-btn:hover {
+    background-color: #cc0000;
+}
+.checkout-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+}
+.clear-cart-btn {
+    background-color: #f44336;
+    float: right;
+}

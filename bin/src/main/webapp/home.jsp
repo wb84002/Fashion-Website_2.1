@@ -194,6 +194,5 @@
   </footer>
 
   <script src="js/home.js" defer></script>
-  <script src="js/shoppingCart.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,203 @@
+@charset "UTF-8";
+/* ====== 基礎設定與主題變數 ====== */
+:root{
+  --bg: #f0f4f8;            /* 背景：淺灰藍 */
+  --surface: #fff;          /* 次層底：白色 */
+  --card: #fff;             /* 卡片底：白色 */
+  --text: #2e3a47;          /* 主要文字：深灰藍 */
+  --muted: #718096;         /* 次要文字：灰藍 */
+  --brand: #90cdf4;         /* 品牌淺藍 */
+  --brand-strong:#63b3ed;   /* 強調藍 */
+  --accent:#f7fafc;         /* 點綴淺灰 */
+  --ok:#a3dcca;             /* 成功淺綠 */
+  --warn:#f6e05e;           /* 提醒淺黃 */
+
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 4px 12px rgba(0,0,0,.12);
+  --shadow-sm: 0 2px 6px rgba(0,0,0,.08);
+
+  --maxw: 1200px;
+}
+
+/* 系統字型堆疊：快、漂亮 */
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "PingFang TC",
+        "Noto Sans TC","Microsoft JhengHei", Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: var(--text);
+  background: var(--bg); /* 簡化背景 */
+}
+
+/* ====== 公用元件 ====== */
+.wrap{max-width:var(--maxw); margin:64px auto; padding:0 20px}
+h1,h2,h3{letter-spacing:.5px; margin:0 0 14px 0}
+h2{font-size: clamp(20px, 2.4vw, 28px)}
+p.muted,.muted{color:var(--muted)}
+
+.badge{
+  display:inline-block; padding:4px 10px; border-radius:999px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-strong));
+  color:#fff; font-weight:700; letter-spacing:.3px; font-size:12px;
+}
+
+.btn{
+  display:inline-block; padding:10px 14px; border-radius:10px;
+  background:linear-gradient(180deg, #fff 0%, #edf2f7 100%);
+  color:#4a5568; font-weight:700; text-decoration:none;
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  box-shadow: var(--shadow-sm);
+}
+.btn:hover{ transform: translateY(-1px) }
+.btn:focus-visible{ outline: 2px solid var(--brand-strong); outline-offset: 3px }
+
+.chip{
+  display:inline-block; padding:8px 12px; border-radius:999px;
+  background: rgba(0,0,0,.04); color:var(--text); text-decoration:none;
+  border:1px solid rgba(0,0,0,.04); backdrop-filter: blur(6px);
+}
+.chip:hover{border-color: rgba(0,0,0,.12)}
+
+/* ====== 頂欄 ====== */
+.topbar{
+  position: sticky; top:0; z-index:50;
+  display:flex; align-items:center; gap:14px;
+  padding:12px 18px; background: rgba(255,255,255,.8); /* 白色底 */
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.brand{
+  font-weight:800; line-height:1.1; letter-spacing:.6px;
+  background: linear-gradient(90deg, #4a5568, #718096); /* 深灰藍 */
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  font-size: 18px;
+}
+.mainnav{display:flex; gap:14px; flex:1; align-items:center}
+.mainnav a{
+  color:var(--muted); text-decoration:none; font-weight:600; padding:8px 10px;
+  border-radius:10px; transition: background .2s ease, color .2s ease;
+}
+.mainnav a:hover{ color:var(--text); background:rgba(0,0,0,.04) }
+.actions{display:flex; gap:8px}
+.actions button{
+  width:36px; height:36px; border-radius:10px; border:1px solid rgba(0,0,0,.08);
+  background:rgba(0,0,0,.04); color:#4a5568; cursor:pointer;
+}
+.actions button:hover{ background:rgba(0,0,0,.12) }
+.actions button:focus-visible{ outline:2px solid var(--brand-strong) }
+
+/* 小螢幕導覽換行 */
+@media (max-width: 720px){
+  .topbar{flex-wrap:wrap; row-gap:10px}
+  .mainnav{order:3; width:100%; justify-content:space-between; flex-wrap:wrap}
+}
+
+/* ====== Hero ====== */
+.hero{ position:relative; min-height: 62vh; display:grid }
+.hero > img{
+  width:100%; height:100%; object-fit:cover; filter: saturate(1.05) contrast(1.05);
+}
+.hero .overlay{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(800px 400px at 25% 20%, rgba(147,197,253,.12), transparent 60%), /* 淺藍 */
+    linear-gradient(180deg, rgba(240,244,248,.15), rgba(240,244,248,.55) 55%, rgba(240,244,248,.85)); /* 淺灰藍 */
+  display:grid; align-items:end;
+}
+.hero .copy{ padding: clamp(16px, 4vw, 32px); max-width: var(--maxw); margin: 0 auto }
+.hero h1{ font-size: clamp(40px, 8vw, 80px); font-weight:900; line-height: .95 }
+.cat-strip{ display:flex; gap:10px; margin-top:14px; flex-wrap:wrap }
+
+/* ====== 卡片網格 ====== */
+.grid{
+  display:grid; gap:16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.card{
+  background: var(--card);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius: var(--radius);
+  overflow:hidden; box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card:hover{ transform: translateY(-3px); box-shadow: var(--shadow) }
+.card img{
+  width:100%; aspect-ratio: 4/5; object-fit:cover;
+  display:block; filter: saturate(1.02);
+}
+.meta{ padding:12px 14px; display:grid; gap:8px }
+.meta .name{ font-weight:700; letter-spacing:.3px }
+.meta .price{ color:var(--brand-strong); font-weight:800 }
+
+/* ====== 上衣 Tabs（純 CSS） ====== */
+.tabs{
+  margin-top:14px;
+  background: transparent;
+  border-radius: var(--radius-lg);
+  padding: 12px 0;
+}
+.tabs input[type="radio"]{ position:absolute; opacity:0; pointer-events:none }
+
+.tabs label{
+  display:inline-block; margin:6px 8px 12px 0; padding:8px 12px; cursor:pointer;
+  border-radius: 999px; border:1px solid rgba(0,0,0,.10);
+  color:var(--muted); user-select:none;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.tabs label:hover{ color:var(--text); border-color: rgba(0,0,0,.25) }
+
+/* Panels wrapper */
+.panels{ margin-top:6px }
+
+/* 預設隱藏所有 panel */
+.panels .panel{ display:none }
+
+/* Checked 標籤樣式 + 顯示對應面板 */
+#tab-t:checked       ~ label[for="tab-t"],
+#tab-shirt:checked   ~ label[for="tab-shirt"],
+#tab-knit:checked    ~ label[for="tab-knit"],
+#tab-outer:checked   ~ label[for="tab-outer"],
+#tab-sport:checked   ~ label[for="tab-sport"]{
+  color:#fff;
+  background: linear-gradient(90deg, var(--brand), var(--brand-strong));
+  border-color: transparent;
+}
+
+#tab-t:checked       ~ .panels .p-t,
+#tab-shirt:checked   ~ .panels .p-shirt,
+#tab-knit:checked    ~ .panels .p-knit,
+#tab-outer:checked   ~ .panels .p-outer,
+#tab-sport:checked   ~ .panels .p-sport{ display:grid }
+
+/* ====== 可及性與動作 ====== */
+a, button{ -webkit-tap-highlight-color: transparent }
+:focus-visible{ outline:2px solid var(--brand-strong); outline-offset:3px }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; scroll-behavior: auto !important }
+}
+
+/* ====== 區塊頭 ====== */
+section.wrap h2{
+  display:flex; align-items:center; gap:10px;
+}
+section.wrap h2::after{
+  content:""; flex:1; height:1px; background: linear-gradient(90deg, rgba(0,0,0,.10), transparent);
+  margin-top:3px;
+}
+
+/* ====== 小工具 ====== */
+.toast{
+  position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%);
+  background: rgba(16,24,40,.9); color:#fff; padding:10px 14px;
+  border-radius: 12px; border:1px solid rgba(255,255,255,.12);
+  box-shadow: var(--shadow-sm); z-index: 60;
+  opacity:0; pointer-events:none; transition: opacity .2s ease, transform .2s ease;
+}
+.toast.show{ opacity:1; transform: translateX(-50%) translateY(-4px) }
+
+/* ====== 輔助文案 ====== */
+.small{ font-size:12px; color:var(--muted) }
