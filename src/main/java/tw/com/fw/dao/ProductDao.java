@@ -15,7 +15,10 @@ public interface ProductDao {
 	int addProduct(Product product);
 	
 	// 根據 ID 查詢產品 
-	public List<Product> getProductById(String id);
+	public List<Product> getProductById(String pd_id);
+	
+	// 根據 pd_group_by_id 查詢產品 
+	public List<Product> getProductByGroupById(String pd_group_by_id);
 
 	// (根據 ID) 查詢產品
 	List<Product> query();
