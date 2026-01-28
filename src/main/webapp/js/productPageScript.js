@@ -23,6 +23,29 @@ function initializePage() {
 
 
 
+// 顏色選擇器功能 ✅
+function initializeColorSelector() {
+    const colorOptions = document.querySelectorAll('.color-option');
+
+    colorOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // 只移除「顏色」這組的 active ✅
+            colorOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+
+            const selectedColor = this.getAttribute('data-color');
+            updateSelectedColor(selectedColor);
+        });
+    });
+}
+
+// 更新選中的顏色 ✅
+function updateSelectedColor(color) {
+    console.log('選中的顏色:', color);
+    showNotification(`已選擇 ${color} 顏色`, 'success');
+}
+
+
 // 尺寸選擇器功能
 function initializeSizeSelector() {
     const sizeOptions = document.querySelectorAll('.size-option');

@@ -1,0 +1,91 @@
+package tw.com.fw.servlet;
+
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import tw.com.fw.dao.ProductDao;
+import tw.com.fw.dao.daoImlp.ProductDaoImlp;
+import tw.com.fw.model.Product;
+
+@WebServlet("/ProductPageServlet")
+public class ProductPageServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private ProductDao dao = new ProductDaoImlp();
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// 這是用ProductPageServlet?pd_id= 查詢
+//		String pd_id = request.getParameter("pd_id");
+//		System.out.println("ProductPageServlet_pd_id = " + pd_id);
+//		List<Product> lists;
+//
+//		if (pd_id == null || pd_id.isEmpty()) {
+//			lists = dao.query();
+//		} else {
+//			lists = dao.getProductById(pd_id);
+//		}
+		
+		// 1. 這是用ProductPageServlet?pd_group_by_id= 查詢(取得商品群組ID)
+		String pd_group_by_id = request.getParameter("pd_group_by_id");
+		System.out.println("ProductPageServlet_pd_group_by_id = " + pd_group_by_id);
+		List<Product> lists;
+
+		if (pd_group_by_id == null || pd_group_by_id.isEmpty()) {
+			lists = dao.query();
+		} else {
+			lists = dao.getProductByGroupById(pd_group_by_id);
+		}
+		
+		
+		//20260114_邏輯判斷
+		if (lists != null && !lists.isEmpty()) {
+			// 取得第一筆作為主要商品資訊
+			Product mainProduct = lists.get(0);
+			request.setAttribute("mainProduct", mainProduct);
+			
+			
+			// 提取不重複的顏色列表(保持原始順序)
+			List<String> uniqueColors = lists.stream()
+					.map(Product::getColor)
+					.distinct()
+					.collect(Collectors.toList());
+			request.setAttribute("availableColors", uniqueColors);
+			
+			// 提取不重複的尺寸列表(保持原始順序)
+			List<String> uniqueSizes = lists.stream()
+					.map(Product::getSize)
+					.distinct()
+					.collect(Collectors.toList());
+			request.setAttribute("availableSize", uniqueSizes);
+			
+			// 將完整地昌品列表也傳遞給前端(可用於javascript查找對應的product_id)
+			request.setAttribute("allProducts", lists);
+			
+			System.out.println("ProductPageServlet_主要商品資訊: "+ mainProduct);
+			System.out.println("ProductPageServlet_可用顏色: "+ uniqueColors);
+			System.out.println("ProductPageServlet_可用尺寸: "+ uniqueSizes);
+			System.out.println("ProductPageServlet_所有商品資訊 :" + lists);
+		}
+
+		
+		
+		// 20260114_request.setAttribute("lists", lists);
+		// 20260114_System.out.println("ProductPageServlet_list:" + lists);
+		request.getRequestDispatcher("productPage.jsp").forward(request, response);
+}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}
+
+

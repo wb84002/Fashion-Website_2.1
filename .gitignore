@@ -1,4 +1,11 @@
+# Eclipse
 /target/
 .project
 .settings
 .classpath
+
+.metadata/
+bin/
+*.class
+
+/Servers

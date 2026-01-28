@@ -22,12 +22,12 @@
 		<div class="panel p-t grid">
 			<c:forEach items="${lists}" var="product">
 				<article class="card">
-					<img src="${product.image_url1}" alt="">
+					<img src="${product.image_url_1}" alt="">
 					<div class="meta">
-						<div class="name">${product.productName}</div>
+						<div class="name">${product.product_name}</div>
 						<div class="price">NT$ ${product.price}</div>
 						<div>
-							<a class="btn btn-primary" href="ProductPageServlet?id=${product.productId}">查看</a>
+							<a class="btn btn-primary" href="ProductPageServlet?id=${product.product_id}">查看</a>
 						</div>
 					</div>
 				</article>
