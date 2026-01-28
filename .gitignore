@@ -1,3 +1,4 @@
+# Eclipse
 /target/
 .project
 .settings
@@ -6,3 +7,5 @@
 .metadata/
 bin/
 *.class
+
+/Servers
